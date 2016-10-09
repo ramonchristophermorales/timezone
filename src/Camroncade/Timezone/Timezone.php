@@ -157,6 +157,29 @@ class Timezone {
     {
         return $this->timezoneList;
     }
+	
+	 /**
+     * get the alias of the timezone specified
+     * removes the time difference
+     * 
+     * @param  string $val - timezone value
+     * @return string
+     */
+    public function getTimezoneAlias($val) 
+    {
+
+    	$alias = '';
+    	foreach ($this->timezoneList as $alias => $timezone) {
+    		if ($timezone == $val) {
+    			$explode = explode(' ', $alias);
+    			unset($explode[0]);
+    			$alias = implode(' ', $explode);
+    			break; 
+    		}
+    	}
+
+    	return $alias;
+    }
 
 	/**
 	 * @param null $selected
